@@ -3,6 +3,7 @@
 
 import Foundation
 
+
 public struct BetaBuildUsagesV1MetricResponse: Codable {
 	public var data: [Datum]
 	public var links: PagedDocumentLinks
@@ -11,6 +12,12 @@ public struct BetaBuildUsagesV1MetricResponse: Codable {
 	public struct Datum: Codable {
 		public var dataPoints: [DataPoints]?
 
+        private static let dateFormatter = {
+            let formatter = DateFormatter()
+            formatter.dateFormat = "yyy-MM-dd"
+            return formatter
+        }()
+        
 		public struct DataPoints: Codable {
 			public var start: Date?
 			public var end: Date?
@@ -58,8 +65,16 @@ public struct BetaBuildUsagesV1MetricResponse: Codable {
 
 			public init(from decoder: Decoder) throws {
 				let values = try decoder.container(keyedBy: StringCodingKey.self)
-				self.start = try values.decodeIfPresent(Date.self, forKey: "start")
-				self.end = try values.decodeIfPresent(Date.self, forKey: "end")
+				let startString = try values.decodeIfPresent(String.self, forKey: "start")
+                if let startDate = Datum.dateFormatter.date(from: startString ?? "") {
+                    self.start = startDate
+                }
+
+                let endString = try values.decodeIfPresent(String.self, forKey: "end")
+                if let endDate = Datum.dateFormatter.date(from: endString ?? "") {
+                    self.end = endDate
+                }
+
 				self.values = try values.decodeIfPresent(Values.self, forKey: "values")
 			}
 
