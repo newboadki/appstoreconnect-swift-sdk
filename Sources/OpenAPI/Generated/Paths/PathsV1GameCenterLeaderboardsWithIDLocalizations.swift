@@ -30,6 +30,7 @@ extension APIEndpoint.V1.GameCenterLeaderboards.WithID {
 				case formatterOverride
 				case formatterSuffix
 				case formatterSuffixSingular
+				case description
 				case gameCenterLeaderboard
 				case gameCenterLeaderboardImage
 			}
@@ -46,12 +47,16 @@ extension APIEndpoint.V1.GameCenterLeaderboards.WithID {
 				case recurrenceDuration
 				case recurrenceRule
 				case archived
+				case activityProperties
+				case visibility
 				case gameCenterDetail
 				case gameCenterGroup
 				case groupLeaderboard
 				case gameCenterLeaderboardSets
 				case localizations
 				case releases
+				case activity
+				case challenge
 			}
 
 			public enum FieldsGameCenterLeaderboardImages: String, Codable, CaseIterable {

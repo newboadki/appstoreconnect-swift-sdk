@@ -46,9 +46,11 @@ extension APIEndpoint.V1.Apps.WithID {
 				case secondaryCategory
 				case secondarySubcategoryOne
 				case secondarySubcategoryTwo
+				case territoryAgeRatings
 			}
 
 			public enum FieldsApps: String, Codable, CaseIterable {
+				case accessibilityURL = "accessibilityUrl"
 				case name
 				case bundleID = "bundleId"
 				case sku
@@ -60,11 +62,13 @@ extension APIEndpoint.V1.Apps.WithID {
 				case subscriptionStatusURLVersionForSandbox = "subscriptionStatusUrlVersionForSandbox"
 				case contentRightsDeclaration
 				case streamlinedPurchasingEnabled
+				case accessibilityDeclarations
 				case appEncryptionDeclarations
 				case ciProduct
 				case betaTesters
 				case betaGroups
 				case appStoreVersions
+				case appTags
 				case preReleaseVersions
 				case betaAppLocalizations
 				case builds
@@ -87,34 +91,48 @@ extension APIEndpoint.V1.Apps.WithID {
 				case reviewSubmissions
 				case subscriptionGracePeriod
 				case customerReviews
+				case customerReviewSummarizations
 				case gameCenterDetail
 				case appStoreVersionExperimentsV2
 				case alternativeDistributionKey
 				case analyticsReportRequests
 				case marketplaceSearchDetail
+				case buildUploads
+				case backgroundAssets
+				case betaFeedbackScreenshotSubmissions
+				case betaFeedbackCrashSubmissions
+				case searchKeywords
+				case webhooks
 			}
 
 			public enum FieldsAgeRatingDeclarations: String, Codable, CaseIterable {
+				case advertising
 				case alcoholTobaccoOrDrugUseOrReferences
 				case contests
-				case gamblingAndContests
 				case gambling
 				case gamblingSimulated
+				case gunsOrOtherWeapons
+				case healthOrWellnessTopics
 				case kidsAgeBand
 				case lootBox
 				case medicalOrTreatmentInformation
+				case messagingAndChat
+				case parentalControls
 				case profanityOrCrudeHumor
+				case ageAssurance
 				case sexualContentGraphicAndNudity
 				case sexualContentOrNudity
 				case horrorOrFearThemes
 				case matureOrSuggestiveThemes
 				case unrestrictedWebAccess
+				case userGeneratedContent
 				case violenceCartoonOrFantasy
 				case violenceRealisticProlongedGraphicOrSadistic
 				case violenceRealistic
 				case ageRatingOverride
+				case ageRatingOverrideV2
 				case koreaAgeRatingOverride
-				case seventeenPlus
+				case developerAgeRatingInfoURL = "developerAgeRatingInfoUrl"
 			}
 
 			public enum FieldsAppInfoLocalizations: String, Codable, CaseIterable {

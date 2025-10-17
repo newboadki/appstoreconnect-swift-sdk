@@ -18,8 +18,8 @@ public struct AppEvent: Codable, Identifiable {
 		public var referenceName: String?
 		public var badge: Badge?
 		public var eventState: EventState?
-		public var deepLink: URL?
-		public var purchaseRequirement: String?
+		public var deepLink: String?
+		public var purchaseRequirement: PurchaseRequirement?
 		public var primaryLocale: String?
 		public var priority: Priority?
 		public var purpose: Purpose?
@@ -47,6 +47,11 @@ public struct AppEvent: Codable, Identifiable {
 			case published = "PUBLISHED"
 			case past = "PAST"
 			case archived = "ARCHIVED"
+		}
+
+		public enum PurchaseRequirement: String, Codable, CaseIterable {
+			case noCostAssociated = "NO_COST_ASSOCIATED"
+			case inAppPurchase = "IN_APP_PURCHASE"
 		}
 
 		public enum Priority: String, Codable, CaseIterable {
@@ -121,7 +126,7 @@ public struct AppEvent: Codable, Identifiable {
 			}
 		}
 
-		public init(referenceName: String? = nil, badge: Badge? = nil, eventState: EventState? = nil, deepLink: URL? = nil, purchaseRequirement: String? = nil, primaryLocale: String? = nil, priority: Priority? = nil, purpose: Purpose? = nil, territorySchedules: [TerritorySchedule]? = nil, archivedTerritorySchedules: [ArchivedTerritorySchedule]? = nil) {
+		public init(referenceName: String? = nil, badge: Badge? = nil, eventState: EventState? = nil, deepLink: String? = nil, purchaseRequirement: PurchaseRequirement? = nil, primaryLocale: String? = nil, priority: Priority? = nil, purpose: Purpose? = nil, territorySchedules: [TerritorySchedule]? = nil, archivedTerritorySchedules: [ArchivedTerritorySchedule]? = nil) {
 			self.referenceName = referenceName
 			self.badge = badge
 			self.eventState = eventState
@@ -139,8 +144,8 @@ public struct AppEvent: Codable, Identifiable {
 			self.referenceName = try values.decodeIfPresent(String.self, forKey: "referenceName")
 			self.badge = try values.decodeIfPresent(Badge.self, forKey: "badge")
 			self.eventState = try values.decodeIfPresent(EventState.self, forKey: "eventState")
-			self.deepLink = try values.decodeIfPresent(URL.self, forKey: "deepLink")
-			self.purchaseRequirement = try values.decodeIfPresent(String.self, forKey: "purchaseRequirement")
+			self.deepLink = try values.decodeIfPresent(String.self, forKey: "deepLink")
+			self.purchaseRequirement = try values.decodeIfPresent(PurchaseRequirement.self, forKey: "purchaseRequirement")
 			self.primaryLocale = try values.decodeIfPresent(String.self, forKey: "primaryLocale")
 			self.priority = try values.decodeIfPresent(Priority.self, forKey: "priority")
 			self.purpose = try values.decodeIfPresent(Purpose.self, forKey: "purpose")

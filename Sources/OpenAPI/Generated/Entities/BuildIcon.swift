@@ -14,28 +14,32 @@ public struct BuildIcon: Codable, Identifiable {
 	}
 
 	public struct Attributes: Codable {
-		public var name: String?
 		public var iconAsset: ImageAsset?
 		public var iconType: IconAssetType?
+		public var isMasked: Bool?
+		public var name: String?
 
-		public init(name: String? = nil, iconAsset: ImageAsset? = nil, iconType: IconAssetType? = nil) {
-			self.name = name
+		public init(iconAsset: ImageAsset? = nil, iconType: IconAssetType? = nil, isMasked: Bool? = nil, name: String? = nil) {
 			self.iconAsset = iconAsset
 			self.iconType = iconType
+			self.isMasked = isMasked
+			self.name = name
 		}
 
 		public init(from decoder: Decoder) throws {
 			let values = try decoder.container(keyedBy: StringCodingKey.self)
-			self.name = try values.decodeIfPresent(String.self, forKey: "name")
 			self.iconAsset = try values.decodeIfPresent(ImageAsset.self, forKey: "iconAsset")
 			self.iconType = try values.decodeIfPresent(IconAssetType.self, forKey: "iconType")
+			self.isMasked = try values.decodeIfPresent(Bool.self, forKey: "masked")
+			self.name = try values.decodeIfPresent(String.self, forKey: "name")
 		}
 
 		public func encode(to encoder: Encoder) throws {
 			var values = encoder.container(keyedBy: StringCodingKey.self)
-			try values.encodeIfPresent(name, forKey: "name")
 			try values.encodeIfPresent(iconAsset, forKey: "iconAsset")
 			try values.encodeIfPresent(iconType, forKey: "iconType")
+			try values.encodeIfPresent(isMasked, forKey: "masked")
+			try values.encodeIfPresent(name, forKey: "name")
 		}
 	}
 

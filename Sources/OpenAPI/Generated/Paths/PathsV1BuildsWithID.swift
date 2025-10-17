@@ -43,6 +43,7 @@ extension APIEndpoint.V1.Builds {
 				case minOsVersion
 				case lsMinimumSystemVersion
 				case computedMinMacOsVersion
+				case computedMinVisionOsVersion
 				case iconAssetToken
 				case processingState
 				case buildAudienceType
@@ -58,6 +59,7 @@ extension APIEndpoint.V1.Builds {
 				case appStoreVersion
 				case icons
 				case buildBundles
+				case buildUpload
 				case perfPowerMetrics
 				case diagnosticSignatures
 			}
@@ -113,6 +115,7 @@ extension APIEndpoint.V1.Builds {
 			}
 
 			public enum FieldsApps: String, Codable, CaseIterable {
+				case accessibilityURL = "accessibilityUrl"
 				case name
 				case bundleID = "bundleId"
 				case sku
@@ -124,11 +127,13 @@ extension APIEndpoint.V1.Builds {
 				case subscriptionStatusURLVersionForSandbox = "subscriptionStatusUrlVersionForSandbox"
 				case contentRightsDeclaration
 				case streamlinedPurchasingEnabled
+				case accessibilityDeclarations
 				case appEncryptionDeclarations
 				case ciProduct
 				case betaTesters
 				case betaGroups
 				case appStoreVersions
+				case appTags
 				case preReleaseVersions
 				case betaAppLocalizations
 				case builds
@@ -151,11 +156,18 @@ extension APIEndpoint.V1.Builds {
 				case reviewSubmissions
 				case subscriptionGracePeriod
 				case customerReviews
+				case customerReviewSummarizations
 				case gameCenterDetail
 				case appStoreVersionExperimentsV2
 				case alternativeDistributionKey
 				case analyticsReportRequests
 				case marketplaceSearchDetail
+				case buildUploads
+				case backgroundAssets
+				case betaFeedbackScreenshotSubmissions
+				case betaFeedbackCrashSubmissions
+				case searchKeywords
+				case webhooks
 			}
 
 			public enum FieldsBuildBetaDetails: String, Codable, CaseIterable {
@@ -174,6 +186,7 @@ extension APIEndpoint.V1.Builds {
 				case reviewType
 				case releaseType
 				case earliestReleaseDate
+				case usesIdfa
 				case downloadable
 				case createdDate
 				case app
@@ -193,9 +206,10 @@ extension APIEndpoint.V1.Builds {
 			}
 
 			public enum FieldsBuildIcons: String, Codable, CaseIterable {
-				case name
 				case iconAsset
 				case iconType
+				case masked
+				case name
 			}
 
 			public enum Include: String, Codable, CaseIterable {
@@ -210,6 +224,7 @@ extension APIEndpoint.V1.Builds {
 				case appStoreVersion
 				case icons
 				case buildBundles
+				case buildUpload
 			}
 
 			public init(fieldsBuilds: [FieldsBuilds]? = nil, fieldsPreReleaseVersions: [FieldsPreReleaseVersions]? = nil, fieldsBetaTesters: [FieldsBetaTesters]? = nil, fieldsBetaBuildLocalizations: [FieldsBetaBuildLocalizations]? = nil, fieldsAppEncryptionDeclarations: [FieldsAppEncryptionDeclarations]? = nil, fieldsBetaAppReviewSubmissions: [FieldsBetaAppReviewSubmissions]? = nil, fieldsApps: [FieldsApps]? = nil, fieldsBuildBetaDetails: [FieldsBuildBetaDetails]? = nil, fieldsAppStoreVersions: [FieldsAppStoreVersions]? = nil, fieldsBuildIcons: [FieldsBuildIcons]? = nil, include: [Include]? = nil, limitBetaBuildLocalizations: Int? = nil, limitBetaGroups: Int? = nil, limitBuildBundles: Int? = nil, limitIcons: Int? = nil, limitIndividualTesters: Int? = nil) {

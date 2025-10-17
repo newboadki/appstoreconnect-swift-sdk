@@ -55,6 +55,7 @@ extension APIEndpoint.V1.AppStoreVersions.WithID {
 			}
 
 			public enum FieldsApps: String, Codable, CaseIterable {
+				case accessibilityURL = "accessibilityUrl"
 				case name
 				case bundleID = "bundleId"
 				case sku
@@ -66,11 +67,13 @@ extension APIEndpoint.V1.AppStoreVersions.WithID {
 				case subscriptionStatusURLVersionForSandbox = "subscriptionStatusUrlVersionForSandbox"
 				case contentRightsDeclaration
 				case streamlinedPurchasingEnabled
+				case accessibilityDeclarations
 				case appEncryptionDeclarations
 				case ciProduct
 				case betaTesters
 				case betaGroups
 				case appStoreVersions
+				case appTags
 				case preReleaseVersions
 				case betaAppLocalizations
 				case builds
@@ -93,11 +96,18 @@ extension APIEndpoint.V1.AppStoreVersions.WithID {
 				case reviewSubmissions
 				case subscriptionGracePeriod
 				case customerReviews
+				case customerReviewSummarizations
 				case gameCenterDetail
 				case appStoreVersionExperimentsV2
 				case alternativeDistributionKey
 				case analyticsReportRequests
 				case marketplaceSearchDetail
+				case buildUploads
+				case backgroundAssets
+				case betaFeedbackScreenshotSubmissions
+				case betaFeedbackCrashSubmissions
+				case searchKeywords
+				case webhooks
 			}
 
 			public enum FieldsAppStoreVersions: String, Codable, CaseIterable {
@@ -109,6 +119,7 @@ extension APIEndpoint.V1.AppStoreVersions.WithID {
 				case reviewType
 				case releaseType
 				case earliestReleaseDate
+				case usesIdfa
 				case downloadable
 				case createdDate
 				case app

@@ -40,6 +40,7 @@ extension APIEndpoint.V1 {
 				case minOsVersion
 				case lsMinimumSystemVersion
 				case computedMinMacOsVersion
+				case computedMinVisionOsVersion
 				case iconAssetToken
 				case processingState
 				case buildAudienceType
@@ -55,6 +56,7 @@ extension APIEndpoint.V1 {
 				case appStoreVersion
 				case icons
 				case buildBundles
+				case buildUpload
 				case perfPowerMetrics
 				case diagnosticSignatures
 			}

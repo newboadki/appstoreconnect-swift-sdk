@@ -1,14 +1,15 @@
-// swift-tools-version:5.6
+// swift-tools-version:5.7
 import PackageDescription
 
 var dependencies: [Package.Dependency] = [
     .package(url: "https://github.com/CreateAPI/URLQueryEncoder.git", from: "0.2.0"),
-	.package(url: "https://github.com/apple/swift-crypto.git", "3.8.0"..<"5.0.0")
+
+	.package(url: "https://github.com/apple/swift-crypto.git", "3.12.3"..<"5.0.0")
 ]
 
 var targetDependencies: [Target.Dependency] = [
-    .productItem(name: "URLQueryEncoder", package: "URLQueryEncoder"),
-    .productItem(name: "Crypto", package: "swift-crypto")
+    .product(name: "URLQueryEncoder", package: "URLQueryEncoder"),
+    .product(name: "Crypto", package: "swift-crypto")
 ]
 
 #if os(Linux)
@@ -21,7 +22,8 @@ let package = Package(
     platforms: [
         .iOS(.v14),
         .macOS(.v11),
-        .tvOS(.v14)
+        .tvOS(.v14),
+        .watchOS(.v9),
     ],
     products: [
         .library(name: "AppStoreConnect-Swift-SDK", targets: ["AppStoreConnect-Swift-SDK"])
